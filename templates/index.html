@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{{ title }}</title>
+    <style>
+      body { font-family: sans-serif; margin: 2rem; max-width: 900px; }
+      textarea { width: 100%; min-height: 90px; }
+      button { margin-top: 0.75rem; padding: 0.6rem 1rem; }
+      .card { border: 1px solid #ddd; border-radius: 8px; padding: 1rem; margin-top: 1rem; }
+      .muted { color: #666; }
+      code { background: #f3f3f3; padding: 0.1rem 0.3rem; border-radius: 4px; }
+      .citation { border-top: 1px solid #eee; padding-top: 0.6rem; margin-top: 0.6rem; }
+      .source-line { font-size: 0.9rem; margin-top: 0.25rem; }
+    </style>
+  </head>
+  <body>
+    <h1>Policy RAG Assistant</h1>
+    <p class="muted">Ask questions about the policy corpus. Answers include citations.</p>
+
+    <form id="chat-form">
+      <label for="question">Question</label>
+      <textarea id="question" placeholder="Example: What is the patch SLA for critical vulnerabilities?"></textarea>
+      <br />
+      <button type="submit">Ask</button>
+    </form>
+
+    <div id="result" class="card" style="display:none;"></div>
+
+    <script>
+      const form = document.getElementById("chat-form");
+      const result = document.getElementById("result");
+
+      form.addEventListener("submit", async (event) => {
+        event.preventDefault();
+        const question = document.getElementById("question").value.trim();
+        if (!question) return;
+
+        result.style.display = "block";
+        result.innerHTML = "<p>Loading...</p>";
+
+        const response = await fetch("/chat", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ question }),
+        });
+
+        if (!response.ok) {
+          const err = await response.json();
+          result.innerHTML = `<p><strong>Error:</strong> ${err.detail || "Unknown error"}</p>`;
+          return;
+        }
+
+        const data = await response.json();
+        const citations = data.citations || [];
+
+        const cites = citations
+          .map((c) => {
+            const sourceText = c.source || "(source unavailable)";
+            const sourceLink = c.source && c.source.startsWith("http")
+              ? `<a href="${c.source}" target="_blank" rel="noopener noreferrer">open source</a>`
+              : `<span class="muted">${sourceText}</span>`;
+            return `
+              <div class="citation">
+                <div><code>${c.doc_id}</code> - ${c.title}</div>
+                <div class="source-line">${sourceLink}</div>
+                <div class="muted">${c.snippet}</div>
+              </div>
+            `;
+          })
+          .join("");
+
+        const meta = data.meta || {};
+        const refusalBadge = meta.refusal ? "<span class='muted'>(corpus refusal)</span>" : "";
+
+        result.innerHTML = `
+          <h3>Answer</h3>
+          <p>${data.answer}</p>
+          <p class="muted">Latency: ${meta.latency_ms ?? "n/a"} ms | Model: ${meta.model ?? "n/a"} | top_k: ${meta.top_k ?? "n/a"} ${refusalBadge}</p>
+          <h4>Citations</h4>
+          <div>${cites || "<span class='muted'>No citations returned.</span>"}</div>
+        `;
+      });
+    </script>
+  </body>
+</html>

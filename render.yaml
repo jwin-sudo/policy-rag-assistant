@@ -1,0 +1,29 @@
+services:
+  - type: web
+    name: policy-rag-assistant
+    runtime: python
+    buildCommand: pip install -r requirements.txt
+    startCommand: uvicorn app:app --host 0.0.0.0 --port $PORT
+    envVars:
+      - key: OPENROUTER_API_KEY
+        sync: false
+      - key: OPENROUTER_MODEL
+        value: qwen/qwen3.6-plus:free
+      - key: OPENROUTER_BASE_URL
+        value: https://openrouter.ai/api/v1
+      - key: EMBEDDING_MODEL
+        value: sentence-transformers/all-MiniLM-L6-v2
+      - key: VECTOR_DB_DIR
+        value: ./data/chroma
+      - key: CORPUS_DIR
+        value: ./corpus
+      - key: TOP_K
+        value: "5"
+      - key: CHUNK_SIZE
+        value: "900"
+      - key: CHUNK_OVERLAP
+        value: "120"
+      - key: RANDOM_SEED
+        value: "42"
+      - key: MAX_ANSWER_WORDS
+        value: "180"

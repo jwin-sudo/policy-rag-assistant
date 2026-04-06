@@ -1,0 +1,378 @@
+{
+  "total": 10,
+  "answered": 10,
+  "latency_p50_ms": 12817,
+  "latency_p95_ms": 29439,
+  "results": [
+    {
+      "id": 1,
+      "question": "What are the core collaboration hours employees are expected to be available?",
+      "gold": "10:00 AM to 3:00 PM local time.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Core collaboration hours are 10:00 AM to 3:00 PM local time (doc_id=01_employee_handbook_overview.md, 01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "snippet": "## 3. Employment Classifications\nEmployees are classified as full-time, part-time, temporary, or intern. Classification affects benefits eligibility, paid leave, and overtime treatment. HR maintains classification records and resolves disputes.\n\n## 4. Work Hours and Scheduling\nCore collaboration hours are 10:00 AM to 3:00 PM local time. Outside this period, teams may set flexib"
+        },
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "snippet": "# Employee Handbook Overview\n\nDocument Owner: People Operations\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: All employees, interns, and long-term contractors\n\n## 1. Purpose\nThis handbook defines core workplace expectations at Northstar Analytics. It explains how teams collaborate, how performance is measured, and how employees can access support. This document i"
+        },
+        {
+          "doc_id": "08_remote_work_and_device_policy.md",
+          "title": "08 remote work and device policy",
+          "snippet": "# Remote Work and Device Policy\n\nDocument Owner: IT and People Operations\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: All remote and hybrid workers\n\n## 1. Purpose\nThis policy sets security and operational requirements for remote work to protect data and maintain productivity.\n\n## 2. Eligibility\nRemote work eligibility is role-dependent and approved by management"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 3. Access Model\nNorthstar Analytics uses role-based access control with least-privilege principles.\n- Baseline roles provide minimum default permissions.\n- Elevated roles are granted for specific duties and limited duration.\n- Break-glass roles are reserved for emergencies and require incident ticket linkage.\n\n## 4. Joiner, Mover, Leaver Workflow\n### Joiner\nNew employees rec"
+        },
+        {
+          "doc_id": "13_onboarding_and_offboarding_sop.md",
+          "title": "13 onboarding and offboarding sop",
+          "snippet": "# Onboarding and Offboarding SOP\n\nDocument Owner: People Operations and IT\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Employees, interns, and contractors with system access\n\n## 1. Purpose\nThis SOP provides standardized onboarding and offboarding steps to reduce operational risk and ensure consistent employee experience.\n\n## 2. Onboarding Timeline\n### T-7 to T-1"
+        }
+      ],
+      "latency_ms": 12768,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 2,
+      "question": "How soon should compensation discrepancies be reported after payroll?",
+      "gold": "Within five business days of payment.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Compensation discrepancies should be reported within five business days of payment (doc_id=01_employee_handbook_overview.md; title=01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "06_incident_response_playbook.md",
+          "title": "06 incident response playbook",
+          "snippet": "## 10. Metrics\nTrack and report:\n- Mean time to detect\n- Mean time to contain\n- Mean time to recover\n- Recurrence rate\n- Corrective action completion rate\n\n## 11. Tabletop Exercises\nConduct at least two tabletop exercises annually. One scenario must involve third-party compromise and one must involve insider misuse.\n\n## 12. Post-Incident Review Output\nThe final report includes:"
+        },
+        {
+          "doc_id": "07_privacy_and_data_subject_rights_procedure.md",
+          "title": "07 privacy and data subject rights procedure",
+          "snippet": "## 7. Timelines\nStandard response target is 30 days from verification, subject to lawful extension where complexity is high. Extensions must be communicated with reason.\n\n## 8. Internal Fulfillment Workflow\n- Privacy team triages request scope.\n- Data owners gather records from systems of record.\n- Legal validates exemptions and response language.\n- Privacy team issues response"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 11. Investigation and Enforcement\nReported concerns are reviewed promptly and confidentially to the greatest extent possible. Investigations follow principles of fairness, proportionality, and documented evidence. Confirmed violations may lead to:\n- Coaching or training\n- Written warning\n- Loss of privileges\n- Suspension\n- Termination\n- Referral to law enforcement where appl"
+        },
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "snippet": "## 5. Attendance and Leave\nEmployees must report planned and unplanned absences in the HRIS portal. Leave categories include:\n- Vacation\n- Sick leave\n- Family and caregiver leave\n- Public holiday leave\n- Jury or civic duty leave\n\nManagers approve leave based on team coverage and business needs. Retaliation for lawful leave usage is prohibited.\n\n## 6. Compensation and Payroll\nPa"
+        },
+        {
+          "doc_id": "09_vendor_risk_management_procedure.md",
+          "title": "09 vendor risk management procedure",
+          "snippet": "## 12. Metrics\nQuarterly reporting includes:\n- Number of active vendors by tier\n- Assessment completion rates\n- Overdue remediation items\n- Vendors under risk exception\n\n## 13. Exceptions\nExceptions require documented risk rationale, compensating controls, and expiration date."
+        }
+      ],
+      "latency_ms": 23817,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 3,
+      "question": "Is retaliation against someone who reports an ethics concern allowed?",
+      "gold": "No, retaliation for good-faith reporting is prohibited.",
+      "expected_source": "02_code_of_conduct_and_ethics.md",
+      "answer": "No, retaliation is strictly prohibited. The policy explicitly states that good-faith reporting is protected and that retaliation is a policy violation (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics). Furthermore, retaliation against any individual who makes a good-faith report is explicitly listed as prohibited workplace behavior (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics).",
+      "citations": [
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 7. Confidentiality and Data Handling\nEmployees must safeguard confidential business, customer, and employee data. Confidential information may only be used for authorized business purposes and shared on a need-to-know basis.\n\n## 8. Communications and Public Statements\nOnly authorized spokespeople may make public statements on behalf of Northstar Analytics. Social media use m"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 5. Conflicts of Interest\nPersonnel must disclose actual or potential conflicts to Compliance. Common examples:\n- Financial interests in competitors or suppliers\n- Hiring or supervising family members without disclosure\n- Accepting outside employment that impairs performance\n\nDisclosed conflicts are assessed and may be mitigated through recusal, reassignment, or written restr"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "# Code of Conduct and Ethics\n\nDocument Owner: Legal and Compliance\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Employees, contractors, vendors on company premises or systems\n\n## 1. Purpose\nThis Code of Conduct establishes mandatory ethical standards for behavior at Northstar Analytics. It ensures a workplace that is lawful, respectful, and accountable.\n\n## 2. Sc"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 4. Respectful Workplace\nDiscrimination, harassment, bullying, retaliation, and intimidation are prohibited. Protected traits include age, race, color, religion, sex, gender identity, sexual orientation, disability, marital status, pregnancy status, veteran status, and other legally protected categories.\n\nExamples of prohibited behavior include:\n- Unwanted sexual comments, jo"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 11. Investigation and Enforcement\nReported concerns are reviewed promptly and confidentially to the greatest extent possible. Investigations follow principles of fairness, proportionality, and documented evidence. Confirmed violations may lead to:\n- Coaching or training\n- Written warning\n- Loss of privileges\n- Suspension\n- Termination\n- Referral to law enforcement where appl"
+        }
+      ],
+      "latency_ms": 27836,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 4,
+      "question": "Are cash gifts ever permitted under the gifts and anti-bribery rules?",
+      "gold": "No, cash gifts are never allowed.",
+      "expected_source": "02_code_of_conduct_and_ethics.md",
+      "answer": "No, cash gifts are never permitted. The Gifts, Hospitality, and Anti-Bribery section of the policy explicitly states that \"Cash gifts are never allowed\" (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics).",
+      "citations": [
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "## 5. Conflicts of Interest\nPersonnel must disclose actual or potential conflicts to Compliance. Common examples:\n- Financial interests in competitors or suppliers\n- Hiring or supervising family members without disclosure\n- Accepting outside employment that impairs performance\n\nDisclosed conflicts are assessed and may be mitigated through recusal, reassignment, or written restr"
+        },
+        {
+          "doc_id": "12_travel_and_expense_policy.md",
+          "title": "12 travel and expense policy",
+          "snippet": "## 7. Corporate Card Use\nCorporate cards are for approved business purchases only. Personal use is prohibited.\n\n## 8. Per Diem and Regional Rules\nWhere per diem applies, employees must follow published rates and local legal requirements.\n\n## 9. Currency and Exchange\nForeign expenses should be reported in original currency and converted by system exchange rates on submission dat"
+        },
+        {
+          "doc_id": "12_travel_and_expense_policy.md",
+          "title": "12 travel and expense policy",
+          "snippet": "## 4. Allowed Expense Categories\n- Air, rail, and ground transport for business travel\n- Lodging within approved rate ranges\n- Reasonable meal expenses while traveling\n- Required visa and travel documentation fees\n- Conference registration and approved training events\n\n## 5. Non-Reimbursable Expenses\n- Personal entertainment\n- Alcohol beyond policy limits\n- Fines, penalties, an"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "snippet": "# Code of Conduct and Ethics\n\nDocument Owner: Legal and Compliance\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Employees, contractors, vendors on company premises or systems\n\n## 1. Purpose\nThis Code of Conduct establishes mandatory ethical standards for behavior at Northstar Analytics. It ensures a workplace that is lawful, respectful, and accountable.\n\n## 2. Sc"
+        },
+        {
+          "doc_id": "15_acceptable_use_policy.md",
+          "title": "15 acceptable use policy",
+          "snippet": "## 4. Email and Messaging\nUse professional communication standards. Suspected phishing emails must be reported immediately. Auto-forwarding to personal accounts is prohibited.\n\n## 5. Software and Licensing\nOnly licensed and approved software may be used. Users may not copy proprietary software or violate license terms.\n\n## 6. Data Storage\nStore work data in approved systems wit"
+        }
+      ],
+      "latency_ms": 12866,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 5,
+      "question": "What is the patch deadline for critical vulnerabilities?",
+      "gold": "Patch or mitigate within 7 days.",
+      "expected_source": "03_information_security_policy.md",
+      "answer": "According to the provided policy, critical vulnerabilities must be patched or mitigated within 7 days (doc_id=03_information_security_policy.md, title=03 information security policy). Exceptions to this deadline require documented risk acceptance and the implementation of compensating controls.",
+      "citations": [
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "snippet": "## 10. Vulnerability and Patch Management\n- Critical vulnerabilities: patch or mitigate within 7 days.\n- High vulnerabilities: patch within 30 days.\n- Medium vulnerabilities: patch within 90 days.\n\nExceptions require documented risk acceptance and compensating controls.\n\n## 11. Secure Development\nEngineering teams must apply secure coding practices and perform:\n- Pull request r"
+        },
+        {
+          "doc_id": "06_incident_response_playbook.md",
+          "title": "06 incident response playbook",
+          "snippet": "# Incident Response Playbook\n\nDocument Owner: Security Operations\nEffective Date: 2026-01-01\nReview Cycle: Semiannual and after major incidents\nApplies To: Security incidents, privacy incidents, and major service disruptions\n\n## 1. Purpose\nThis playbook defines a consistent process for preparing, detecting, containing, eradicating, and recovering from incidents.\n\n## 2. Severity"
+        },
+        {
+          "doc_id": "10_change_management_procedure.md",
+          "title": "10 change management procedure",
+          "snippet": "## 4. Review and Approval\nNormal changes require approval from technical owner and service owner. Security review is required for authentication, authorization, or data protection impacts.\n\n## 5. Testing Expectations\nChanges must be tested in non-production where feasible. Tests should cover:\n- Functional behavior\n- Error handling\n- Security considerations\n- Performance impacts"
+        },
+        {
+          "doc_id": "14_customer_support_escalation_procedure.md",
+          "title": "14 customer support escalation procedure",
+          "snippet": "## 9. Root Cause and Follow-Up\nFor P1 and P2 issues, complete root cause summary and preventive action plan within five business days.\n\n## 10. Customer Closure Criteria\nTicket may close when:\n- Customer confirms resolution, or\n- Agreed waiting period passes after solution delivery, and\n- Internal validation confirms no ongoing impact\n\n## 11. Quality Controls\nSupport leadership "
+        },
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "snippet": "## 13. Incident Management\nSuspected security events must be reported immediately through the incident channel. Investigation, containment, communication, and post-incident review follow the Incident Response Playbook.\n\n## 14. Business Continuity\nCritical systems require backup, recovery testing, and continuity planning. Recovery objectives are defined by system tier and busine"
+        }
+      ],
+      "latency_ms": 11209,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 6,
+      "question": "Is multi-factor authentication required for business-critical applications?",
+      "gold": "Yes, MFA is required for all business-critical applications.",
+      "expected_source": "03_information_security_policy.md",
+      "answer": "Yes, multi-factor authentication is required for all business-critical applications (doc_id=03_information_security_policy.md; title=03 information security policy).",
+      "citations": [
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "snippet": "## 4. Identity and Authentication\n- Unique user IDs are required.\n- Shared accounts are prohibited except approved service accounts.\n- Multi-factor authentication is required for all business-critical applications.\n- Passwords must meet complexity and rotation standards or use approved passwordless methods.\n\n## 5. Access Control\nAccess is granted based on business need and appr"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 11. Authentication Standards\n- Password length minimum aligned with security baseline.\n- Password reuse restrictions enforced through identity provider.\n- MFA required for all remote access and sensitive tools.\n- Session timeouts required for admin consoles.\n\n## 12. Logging and Alerting\nSystems must log authentication attempts, privilege changes, and critical authorization f"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 5. Access Request Requirements\nEach request must include:\n- Business justification\n- Requested scope\n- Duration (for temporary access)\n- Linked ticket ID\n\nRequests without complete justification are rejected.\n\n## 6. Privileged Access Controls\nPrivileged accounts must:\n- Use MFA\n- Be time-limited when possible\n- Be logged for session activity\n- Avoid daily productivity tasks\n"
+        },
+        {
+          "doc_id": "11_business_continuity_and_disaster_recovery_policy.md",
+          "title": "11 business continuity and disaster recovery policy",
+          "snippet": "## 4. Continuity Requirements\nBusiness units must document:\n- Critical processes\n- Dependencies and fallback workflows\n- Communication chains\n- Minimum staffing requirements\n\n## 5. Backup Requirements\nCritical data must be backed up regularly with encrypted storage and periodic restore testing.\n\n## 6. DR Environment Strategy\nCritical services require redundant architecture wher"
+        },
+        {
+          "doc_id": "08_remote_work_and_device_policy.md",
+          "title": "08 remote work and device policy",
+          "snippet": "## 4. Company Device Requirements\nEmployees must use company-managed devices for company work unless exception is approved. Mandatory controls include:\n- Full disk encryption\n- Endpoint protection\n- Auto-lock after inactivity\n- Up-to-date operating system and browsers\n\n## 5. Network and Connectivity\nUse trusted networks whenever possible. Public Wi-Fi requires VPN with MFA. Ope"
+        }
+      ],
+      "latency_ms": 15568,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 7,
+      "question": "Can a person approve their own privileged access request?",
+      "gold": "No, self-approval for privileged access is not allowed.",
+      "expected_source": "04_access_control_standard.md",
+      "answer": "No. According to the Access Control Standard (doc_id=04_access_control_standard.md; title=04 access control standard), \"No individual may approve their own privileged access request.\" This explicit prohibition ensures proper segregation of duties and prevents unauthorized system access.",
+      "citations": [
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "# Access Control Standard\n\nDocument Owner: Security Engineering\nEffective Date: 2026-01-01\nReview Cycle: Every 12 months\nApplies To: Identity providers, SaaS tools, infrastructure platforms, internal apps\n\n## 1. Purpose\nThis standard defines how access is requested, approved, granted, reviewed, and revoked to reduce unauthorized use of company systems and data.\n\n## 2. Role Defi"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 5. Access Request Requirements\nEach request must include:\n- Business justification\n- Requested scope\n- Duration (for temporary access)\n- Linked ticket ID\n\nRequests without complete justification are rejected.\n\n## 6. Privileged Access Controls\nPrivileged accounts must:\n- Use MFA\n- Be time-limited when possible\n- Be logged for session activity\n- Avoid daily productivity tasks\n"
+        },
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "snippet": "## 4. Identity and Authentication\n- Unique user IDs are required.\n- Shared accounts are prohibited except approved service accounts.\n- Multi-factor authentication is required for all business-critical applications.\n- Passwords must meet complexity and rotation standards or use approved passwordless methods.\n\n## 5. Access Control\nAccess is granted based on business need and appr"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 3. Access Model\nNorthstar Analytics uses role-based access control with least-privilege principles.\n- Baseline roles provide minimum default permissions.\n- Elevated roles are granted for specific duties and limited duration.\n- Break-glass roles are reserved for emergencies and require incident ticket linkage.\n\n## 4. Joiner, Mover, Leaver Workflow\n### Joiner\nNew employees rec"
+        },
+        {
+          "doc_id": "15_acceptable_use_policy.md",
+          "title": "15 acceptable use policy",
+          "snippet": "## 9. Reporting Suspected Misuse\nUsers must report suspected policy violations, unauthorized access, and security concerns through approved channels.\n\n## 10. Enforcement\nViolations may result in access restrictions, disciplinary action, contract termination, or legal action depending on severity.\n\n## 11. Acknowledgment\nAll users must acknowledge this policy during onboarding an"
+        }
+      ],
+      "latency_ms": 24273,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 8,
+      "question": "How often must access reviews be performed for critical systems?",
+      "gold": "Monthly.",
+      "expected_source": "04_access_control_standard.md",
+      "answer": "Access reviews for critical systems must be performed monthly (doc_id=04_access_control_standard.md; title=04 access control standard).",
+      "citations": [
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 8. Access Review Cadence\n- Critical systems: monthly review\n- High-risk systems: quarterly review\n- Standard systems: semiannual review\n\nReview evidence must include reviewer name, date, decisions, and remediation actions.\n\n## 9. Separation of Duties\nConflicting permissions must be avoided. Examples include:\n- Ability to both initiate and approve payments\n- Ability to deploy"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "# Access Control Standard\n\nDocument Owner: Security Engineering\nEffective Date: 2026-01-01\nReview Cycle: Every 12 months\nApplies To: Identity providers, SaaS tools, infrastructure platforms, internal apps\n\n## 1. Purpose\nThis standard defines how access is requested, approved, granted, reviewed, and revoked to reduce unauthorized use of company systems and data.\n\n## 2. Role Defi"
+        },
+        {
+          "doc_id": "11_business_continuity_and_disaster_recovery_policy.md",
+          "title": "11 business continuity and disaster recovery policy",
+          "snippet": "## 10. Documentation and Ownership\nEach critical system must maintain:\n- System owner\n- Runbook\n- Recovery procedure\n- Contact roster\n- Dependency map\n\n## 11. Post-Event Review\nAfter significant disruptions, teams perform review to capture timeline, impact, lessons learned, and resilience improvements.\n\n## 12. Compliance\nCompliance with this policy is monitored through control "
+        },
+        {
+          "doc_id": "10_change_management_procedure.md",
+          "title": "10 change management procedure",
+          "snippet": "## 9. Emergency Changes\nEmergency changes require immediate implementation notes and retrospective approval within one business day.\n\n## 10. Post-Implementation Review\nFor high-risk or failed changes, complete review within three business days covering root cause and prevention actions.\n\n## 11. Segregation of Duties\nWhere practical, the change requester should not be the sole a"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 11. Authentication Standards\n- Password length minimum aligned with security baseline.\n- Password reuse restrictions enforced through identity provider.\n- MFA required for all remote access and sensitive tools.\n- Session timeouts required for admin consoles.\n\n## 12. Logging and Alerting\nSystems must log authentication attempts, privilege changes, and critical authorization f"
+        }
+      ],
+      "latency_ms": 8042,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 9,
+      "question": "What is the default retention period for financial accounting records?",
+      "gold": "7 years.",
+      "expected_source": "05_data_classification_and_retention_policy.md",
+      "answer": "According to the 05 data classification and retention policy (doc_id=05_data_classification_and_retention_policy.md), the default retention period for financial accounting records is 7 years. This serves as the minimum schedule unless a legal hold requires longer retention.",
+      "citations": [
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "snippet": "## 6. Retention Schedule\nMinimum schedule unless legal hold requires longer retention:\n- HR personnel records: 7 years after separation\n- Financial accounting records: 7 years\n- Customer contracts: 7 years after expiration\n- Security logs: 1 year minimum, 3 years for critical systems\n- Support tickets: 2 years after closure\n- Product analytics events: 18 months unless anonymize"
+        },
+        {
+          "doc_id": "09_vendor_risk_management_procedure.md",
+          "title": "09 vendor risk management procedure",
+          "snippet": "## 12. Metrics\nQuarterly reporting includes:\n- Number of active vendors by tier\n- Assessment completion rates\n- Overdue remediation items\n- Vendors under risk exception\n\n## 13. Exceptions\nExceptions require documented risk rationale, compensating controls, and expiration date."
+        },
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "snippet": "# Data Classification and Retention Policy\n\nDocument Owner: Data Governance Council\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: All data created, processed, or stored by Northstar Analytics\n\n## 1. Purpose\nThis policy defines data categories, handling requirements, retention periods, and disposal procedures.\n\n## 2. Classification Levels\n### Public\nInformation app"
+        },
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "snippet": "## 9. Data Minimization\nCollect only what is needed for a stated business purpose. Avoid long-term storage of raw identifiers if aggregated or anonymized alternatives are sufficient.\n\n## 10. Backups\nBackups inherit the same classification and handling requirements as source data. Backup retention and deletion windows must align with this policy.\n\n## 11. Third-Party Processors\nV"
+        },
+        {
+          "doc_id": "07_privacy_and_data_subject_rights_procedure.md",
+          "title": "07 privacy and data subject rights procedure",
+          "snippet": "## 12. Vendor Coordination\nWhen vendors process relevant personal data, vendor managers must coordinate fulfillment support and ensure contractual obligations are met.\n\n## 13. Recordkeeping\nFor each DSR, maintain:\n- Request type and date\n- Verification steps\n- Systems queried\n- Decision and legal rationale\n- Response date and content summary\n\nRecords are retained according to l"
+        }
+      ],
+      "latency_ms": 8704,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 10,
+      "question": "What happens to deletion when Legal places a legal hold?",
+      "gold": "Deletion/alteration must stop immediately for relevant data.",
+      "expected_source": "05_data_classification_and_retention_policy.md",
+      "answer": "When Legal issues a hold notice, the deletion and alteration of relevant data must stop immediately. System owners are also required to confirm the enforcement of the hold in writing (doc_id=05_data_classification_and_retention_policy.md, title=05 data classification and retention policy).",
+      "citations": [
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "snippet": "## 6. Retention Schedule\nMinimum schedule unless legal hold requires longer retention:\n- HR personnel records: 7 years after separation\n- Financial accounting records: 7 years\n- Customer contracts: 7 years after expiration\n- Security logs: 1 year minimum, 3 years for critical systems\n- Support tickets: 2 years after closure\n- Product analytics events: 18 months unless anonymize"
+        },
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "snippet": "## 14. Separation and Offboarding\nUpon separation, employees must return all company assets by the final working day unless alternate arrangements are approved. Access revocation is coordinated by IT and HR on the termination date.\n\n## 15. Policy Exceptions\nAny exception to this handbook requires written approval from People Operations and Legal. Temporary exceptions must inclu"
+        },
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "snippet": "## 15. Enforcement\nNon-compliant access patterns may be suspended until remediation is complete. Repeated violations may trigger disciplinary action."
+        },
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "snippet": "## 13. Violations\nImproper handling, over-retention, or unauthorized sharing may lead to corrective action and remediation plans.\n\n## 14. Exceptions\nExceptions require written approval from Legal, Security, and Data Governance, with periodic renewal and compensating controls."
+        },
+        {
+          "doc_id": "13_onboarding_and_offboarding_sop.md",
+          "title": "13 onboarding and offboarding sop",
+          "snippet": "## 8. Offboarding Workflow\n- HR confirms final working date and notifies stakeholders.\n- IT schedules access revocation.\n- Manager completes handover and knowledge transfer.\n- Asset return is coordinated and tracked.\n\n## 9. Access Revocation Standards\nFor involuntary terminations, access is revoked at notification time or earlier. For voluntary departures, access is revoked at "
+        }
+      ],
+      "latency_ms": 10275,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    }
+  ]
+}

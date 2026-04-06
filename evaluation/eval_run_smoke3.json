@@ -1,0 +1,98 @@
+{
+  "total": 3,
+  "answered": 3,
+  "latency_p50_ms": 8263,
+  "latency_p95_ms": 17248,
+  "results": [
+    {
+      "id": 1,
+      "question": "What are the core collaboration hours employees are expected to be available?",
+      "gold": "10:00 AM to 3:00 PM local time.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Core collaboration hours are 10:00 AM to 3:00 PM local time (doc_id=01_employee_handbook_overview.md, 01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 3. Employment Classifications\nEmployees are classified as full-time, part-time, temporary, or intern. Classification affects benefits eligibility, paid leave, and overtime treatment. HR maintains classification records and resolves disputes.\n\n## 4. Work Hours and Scheduling\nCore collaboration hours are 10:00 AM to 3:00 PM local time. Outside this period, teams may set flexib"
+        },
+        {
+          "doc_id": "08_remote_work_and_device_policy.md",
+          "title": "08 remote work and device policy",
+          "source": "corpus/08_remote_work_and_device_policy.md",
+          "snippet": "# Remote Work and Device Policy\n\nDocument Owner: IT and People Operations\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: All remote and hybrid workers\n\n## 1. Purpose\nThis policy sets security and operational requirements for remote work to protect data and maintain productivity.\n\n## 2. Eligibility\nRemote work eligibility is role-dependent and approved by management"
+        },
+        {
+          "doc_id": "13_onboarding_and_offboarding_sop.md",
+          "title": "13 onboarding and offboarding sop",
+          "source": "corpus/13_onboarding_and_offboarding_sop.md",
+          "snippet": "# Onboarding and Offboarding SOP\n\nDocument Owner: People Operations and IT\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Employees, interns, and contractors with system access\n\n## 1. Purpose\nThis SOP provides standardized onboarding and offboarding steps to reduce operational risk and ensure consistent employee experience.\n\n## 2. Onboarding Timeline\n### T-7 to T-1"
+        }
+      ],
+      "latency_ms": 6606,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 2,
+      "question": "How soon should compensation discrepancies be reported after payroll?",
+      "gold": "Within five business days of payment.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Compensation discrepancies should be reported within five business days of payment (doc_id=01_employee_handbook_overview.md; title=01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 5. Attendance and Leave\nEmployees must report planned and unplanned absences in the HRIS portal. Leave categories include:\n- Vacation\n- Sick leave\n- Family and caregiver leave\n- Public holiday leave\n- Jury or civic duty leave\n\nManagers approve leave based on team coverage and business needs. Retaliation for lawful leave usage is prohibited.\n\n## 6. Compensation and Payroll\nPa"
+        },
+        {
+          "doc_id": "12_travel_and_expense_policy.md",
+          "title": "12 travel and expense policy",
+          "source": "corpus/12_travel_and_expense_policy.md",
+          "snippet": "## 7. Corporate Card Use\nCorporate cards are for approved business purchases only. Personal use is prohibited.\n\n## 8. Per Diem and Regional Rules\nWhere per diem applies, employees must follow published rates and local legal requirements.\n\n## 9. Currency and Exchange\nForeign expenses should be reported in original currency and converted by system exchange rates on submission dat"
+        },
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "source": "corpus/02_code_of_conduct_and_ethics.md",
+          "snippet": "## 11. Investigation and Enforcement\nReported concerns are reviewed promptly and confidentially to the greatest extent possible. Investigations follow principles of fairness, proportionality, and documented evidence. Confirmed violations may lead to:\n- Coaching or training\n- Written warning\n- Loss of privileges\n- Suspension\n- Termination\n- Referral to law enforcement where appl"
+        },
+        {
+          "doc_id": "14_customer_support_escalation_procedure.md",
+          "title": "14 customer support escalation procedure",
+          "source": "corpus/14_customer_support_escalation_procedure.md",
+          "snippet": "## 9. Root Cause and Follow-Up\nFor P1 and P2 issues, complete root cause summary and preventive action plan within five business days.\n\n## 10. Customer Closure Criteria\nTicket may close when:\n- Customer confirms resolution, or\n- Agreed waiting period passes after solution delivery, and\n- Internal validation confirms no ongoing impact\n\n## 11. Quality Controls\nSupport leadership "
+        }
+      ],
+      "latency_ms": 8263,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 3,
+      "question": "Is retaliation against someone who reports an ethics concern allowed?",
+      "gold": "No, retaliation for good-faith reporting is prohibited.",
+      "expected_source": "02_code_of_conduct_and_ethics.md",
+      "answer": "No, retaliation is strictly prohibited. The policy explicitly states that retaliation, along with discrimination, harassment, bullying, and intimidation, is not permitted in the workplace (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics). It specifically identifies \"retaliation against a person who made a report in good faith\" as a prohibited behavior (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics).",
+      "citations": [
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "source": "corpus/02_code_of_conduct_and_ethics.md",
+          "snippet": "## 7. Confidentiality and Data Handling\nEmployees must safeguard confidential business, customer, and employee data. Confidential information may only be used for authorized business purposes and shared on a need-to-know basis.\n\n## 8. Communications and Public Statements\nOnly authorized spokespeople may make public statements on behalf of Northstar Analytics. Social media use m"
+        },
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 11. Health and Safety\nEmployees must follow local safety protocols and report hazards immediately. Incident reports are submitted within 24 hours. For remote workers, the home office must meet minimum ergonomic and electrical safety expectations.\n\n## 12. Equipment and Acceptable Use\nCompany-provided devices are for business use. Limited personal use is permitted if it does n"
+        }
+      ],
+      "latency_ms": 13255,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    }
+  ]
+}

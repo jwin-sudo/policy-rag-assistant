@@ -1,0 +1,422 @@
+{
+  "total": 22,
+  "answered": 22,
+  "latency_p50_ms": 14955,
+  "latency_p95_ms": 25271,
+  "results": [
+    {
+      "id": 1,
+      "question": "What are the core collaboration hours employees are expected to be available?",
+      "gold": "10:00 AM to 3:00 PM local time.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Core collaboration hours are 10:00 AM to 3:00 PM local time (doc_id=01_employee_handbook_overview.md; title=01 employee handbook overview). Outside this window, teams may establish flexible schedules with manager approval.",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 3. Employment Classifications\nEmployees are classified as full-time, part-time, temporary, or intern. Classification affects benefits eligibility, paid leave, and overtime treatment. HR maintains classification records and resolves disputes.\n\n## 4. Work Hours and Scheduling\nCore collaboration hours are 10:00 AM to 3:00 PM local time. Outside this period, teams may set flexib"
+        }
+      ],
+      "latency_ms": 24633,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 2,
+      "question": "How soon should compensation discrepancies be reported after payroll?",
+      "gold": "Within five business days of payment.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Compensation discrepancies must be reported within five business days of payment (doc_id=01_employee_handbook_overview.md; title=01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 5. Attendance and Leave\nEmployees must report planned and unplanned absences in the HRIS portal. Leave categories include:\n- Vacation\n- Sick leave\n- Family and caregiver leave\n- Public holiday leave\n- Jury or civic duty leave\n\nManagers approve leave based on team coverage and business needs. Retaliation for lawful leave usage is prohibited.\n\n## 6. Compensation and Payroll\nPa"
+        }
+      ],
+      "latency_ms": 10384,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 3,
+      "question": "Is retaliation against someone who reports an ethics concern allowed?",
+      "gold": "No, retaliation for good-faith reporting is prohibited.",
+      "expected_source": "02_code_of_conduct_and_ethics.md",
+      "answer": "No, retaliation is strictly prohibited. According to the 02 code of conduct and ethics (doc_id=02_code_of_conduct_and_ethics.md), retaliation, along with discrimination, harassment, bullying, and intimidation, is explicitly prohibited in the workplace. The policy specifically identifies \"retaliation against a person who made a report in good faith\" as a prohibited behavior.",
+      "citations": [
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "source": "corpus/02_code_of_conduct_and_ethics.md",
+          "snippet": "## 7. Confidentiality and Data Handling\nEmployees must safeguard confidential business, customer, and employee data. Confidential information may only be used for authorized business purposes and shared on a need-to-know basis.\n\n## 8. Communications and Public Statements\nOnly authorized spokespeople may make public statements on behalf of Northstar Analytics. Social media use m"
+        }
+      ],
+      "latency_ms": 7905,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 4,
+      "question": "Are cash gifts ever permitted under the gifts and anti-bribery rules?",
+      "gold": "No, cash gifts are never allowed.",
+      "expected_source": "02_code_of_conduct_and_ethics.md",
+      "answer": "No, cash gifts are never permitted. The policy explicitly states that \"Cash gifts are never allowed\" under the Gifts, Hospitality, and Anti-Bribery guidelines (doc_id=02_code_of_conduct_and_ethics.md; title=02 code of conduct and ethics).",
+      "citations": [
+        {
+          "doc_id": "02_code_of_conduct_and_ethics.md",
+          "title": "02 code of conduct and ethics",
+          "source": "corpus/02_code_of_conduct_and_ethics.md",
+          "snippet": "## 5. Conflicts of Interest\nPersonnel must disclose actual or potential conflicts to Compliance. Common examples:\n- Financial interests in competitors or suppliers\n- Hiring or supervising family members without disclosure\n- Accepting outside employment that impairs performance\n\nDisclosed conflicts are assessed and may be mitigated through recusal, reassignment, or written restr"
+        }
+      ],
+      "latency_ms": 8664,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 5,
+      "question": "What is the patch deadline for critical vulnerabilities?",
+      "gold": "Patch or mitigate within 7 days.",
+      "expected_source": "03_information_security_policy.md",
+      "answer": "According to the 03 information security policy (doc_id=03_information_security_policy.md), critical vulnerabilities must be patched or mitigated within 7 days. Exceptions to this deadline require documented risk acceptance and the implementation of compensating controls.",
+      "citations": [
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "source": "corpus/03_information_security_policy.md",
+          "snippet": "## 10. Vulnerability and Patch Management\n- Critical vulnerabilities: patch or mitigate within 7 days.\n- High vulnerabilities: patch within 30 days.\n- Medium vulnerabilities: patch within 90 days.\n\nExceptions require documented risk acceptance and compensating controls.\n\n## 11. Secure Development\nEngineering teams must apply secure coding practices and perform:\n- Pull request r"
+        }
+      ],
+      "latency_ms": 5813,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 6,
+      "question": "Is multi-factor authentication required for business-critical applications?",
+      "gold": "Yes, MFA is required for all business-critical applications.",
+      "expected_source": "03_information_security_policy.md",
+      "answer": "Yes, multi-factor authentication is required for all business-critical applications (doc_id=03_information_security_policy.md, title=03 information security policy).",
+      "citations": [
+        {
+          "doc_id": "03_information_security_policy.md",
+          "title": "03 information security policy",
+          "source": "corpus/03_information_security_policy.md",
+          "snippet": "## 4. Identity and Authentication\n- Unique user IDs are required.\n- Shared accounts are prohibited except approved service accounts.\n- Multi-factor authentication is required for all business-critical applications.\n- Passwords must meet complexity and rotation standards or use approved passwordless methods.\n\n## 5. Access Control\nAccess is granted based on business need and appr"
+        },
+        {
+          "doc_id": "11_business_continuity_and_disaster_recovery_policy.md",
+          "title": "11 business continuity and disaster recovery policy",
+          "source": "corpus/11_business_continuity_and_disaster_recovery_policy.md",
+          "snippet": "## 4. Continuity Requirements\nBusiness units must document:\n- Critical processes\n- Dependencies and fallback workflows\n- Communication chains\n- Minimum staffing requirements\n\n## 5. Backup Requirements\nCritical data must be backed up regularly with encrypted storage and periodic restore testing.\n\n## 6. DR Environment Strategy\nCritical services require redundant architecture wher"
+        }
+      ],
+      "latency_ms": 20765,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 7,
+      "question": "Can a person approve their own privileged access request?",
+      "gold": "No, self-approval for privileged access is not allowed.",
+      "expected_source": "04_access_control_standard.md",
+      "answer": "No, an individual cannot approve their own privileged access request. The 04 access control standard (doc_id=04_access_control_standard.md; title=04 access control standard) explicitly states: \"No individual may approve their own privileged access request.\" This requirement ensures proper oversight and minimizes the risk of unauthorized access to company systems and data.",
+      "citations": [
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "source": "corpus/04_access_control_standard.md",
+          "snippet": "# Access Control Standard\n\nDocument Owner: Security Engineering\nEffective Date: 2026-01-01\nReview Cycle: Every 12 months\nApplies To: Identity providers, SaaS tools, infrastructure platforms, internal apps\n\n## 1. Purpose\nThis standard defines how access is requested, approved, granted, reviewed, and revoked to reduce unauthorized use of company systems and data.\n\n## 2. Role Defi"
+        }
+      ],
+      "latency_ms": 15088,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 8,
+      "question": "How often must access reviews be performed for critical systems?",
+      "gold": "Monthly.",
+      "expected_source": "04_access_control_standard.md",
+      "answer": "Access reviews for critical systems must be performed monthly (doc_id=04_access_control_standard.md, title=04 access control standard).",
+      "citations": [
+        {
+          "doc_id": "04_access_control_standard.md",
+          "title": "04 access control standard",
+          "source": "corpus/04_access_control_standard.md",
+          "snippet": "## 11. Authentication Standards\n- Password length minimum aligned with security baseline.\n- Password reuse restrictions enforced through identity provider.\n- MFA required for all remote access and sensitive tools.\n- Session timeouts required for admin consoles.\n\n## 12. Logging and Alerting\nSystems must log authentication attempts, privilege changes, and critical authorization f"
+        }
+      ],
+      "latency_ms": 15403,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 9,
+      "question": "What is the default retention period for financial accounting records?",
+      "gold": "7 years.",
+      "expected_source": "05_data_classification_and_retention_policy.md",
+      "answer": "The default retention period for financial accounting records is 7 years (doc_id=05_data_classification_and_retention_policy.md; title=05 data classification and retention policy). This minimum schedule applies unless a legal hold requires longer retention.",
+      "citations": [
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "source": "corpus/05_data_classification_and_retention_policy.md",
+          "snippet": "## 6. Retention Schedule\nMinimum schedule unless legal hold requires longer retention:\n- HR personnel records: 7 years after separation\n- Financial accounting records: 7 years\n- Customer contracts: 7 years after expiration\n- Security logs: 1 year minimum, 3 years for critical systems\n- Support tickets: 2 years after closure\n- Product analytics events: 18 months unless anonymize"
+        }
+      ],
+      "latency_ms": 16206,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 10,
+      "question": "What happens to deletion when Legal places a legal hold?",
+      "gold": "Deletion/alteration must stop immediately for relevant data.",
+      "expected_source": "05_data_classification_and_retention_policy.md",
+      "answer": "When Legal issues a hold notice, the deletion and alteration of relevant data must stop immediately. System owners are also required to confirm the enforcement of the hold in writing (doc_id=05_data_classification_and_retention_policy.md; title=05 data classification and retention policy).",
+      "citations": [
+        {
+          "doc_id": "05_data_classification_and_retention_policy.md",
+          "title": "05 data classification and retention policy",
+          "source": "corpus/05_data_classification_and_retention_policy.md",
+          "snippet": "## 6. Retention Schedule\nMinimum schedule unless legal hold requires longer retention:\n- HR personnel records: 7 years after separation\n- Financial accounting records: 7 years\n- Customer contracts: 7 years after expiration\n- Security logs: 1 year minimum, 3 years for critical systems\n- Support tickets: 2 years after closure\n- Product analytics events: 18 months unless anonymize"
+        }
+      ],
+      "latency_ms": 8545,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 11,
+      "question": "Which severity indicates critical business impact and likely legal or customer harm?",
+      "gold": "Sev 1.",
+      "expected_source": "06_incident_response_playbook.md",
+      "answer": "Based on the provided policy corpus, **Sev 1** indicates a critical business impact where legal or customer harm is likely (doc_id=06_incident_response_playbook.md; title=06 incident response playbook).",
+      "citations": [
+        {
+          "doc_id": "06_incident_response_playbook.md",
+          "title": "06 incident response playbook",
+          "source": "corpus/06_incident_response_playbook.md",
+          "snippet": "# Incident Response Playbook\n\nDocument Owner: Security Operations\nEffective Date: 2026-01-01\nReview Cycle: Semiannual and after major incidents\nApplies To: Security incidents, privacy incidents, and major service disruptions\n\n## 1. Purpose\nThis playbook defines a consistent process for preparing, detecting, containing, eradicating, and recovering from incidents.\n\n## 2. Severity"
+        }
+      ],
+      "latency_ms": 6925,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 12,
+      "question": "For Sev 1 and Sev 2 incidents, when should a post-incident review be completed?",
+      "gold": "Within five business days.",
+      "expected_source": "06_incident_response_playbook.md",
+      "answer": "I can only answer questions about the provided policy corpus.",
+      "citations": [
+        {
+          "doc_id": "06_incident_response_playbook.md",
+          "title": "06 incident response playbook",
+          "source": "corpus/06_incident_response_playbook.md",
+          "snippet": "## 5. Response Workflow\n### Step 1: Detect and Triage\nCollect initial facts, assign temporary severity, and open incident channel and ticket.\n\n### Step 2: Contain\nImplement short-term controls to limit spread or impact. Example actions: isolate host, disable account, block indicator.\n\n### Step 3: Investigate\nGather logs, endpoint evidence, and access records. Build timeline and"
+        },
+        {
+          "doc_id": "10_change_management_procedure.md",
+          "title": "10 change management procedure",
+          "source": "corpus/10_change_management_procedure.md",
+          "snippet": "## 9. Emergency Changes\nEmergency changes require immediate implementation notes and retrospective approval within one business day.\n\n## 10. Post-Implementation Review\nFor high-risk or failed changes, complete review within three business days covering root cause and prevention actions.\n\n## 11. Segregation of Duties\nWhere practical, the change requester should not be the sole a"
+        }
+      ],
+      "latency_ms": 23375,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 13,
+      "question": "What is the standard timeline for responding to a verified data subject request?",
+      "gold": "30 days, with lawful extension if needed.",
+      "expected_source": "07_privacy_and_data_subject_rights_procedure.md",
+      "answer": "The standard timeline for responding to a verified data subject request is 30 days from verification (doc_id=07_privacy_and_data_subject_rights_procedure.md; title=07 privacy and data subject rights procedure). This target may be lawfully extended if the request involves high complexity, provided the extension and its reason are communicated to the requester (doc_id=07_privacy_and_data_subject_rights_procedure.md; title=07 privacy and data subject rights procedure).",
+      "citations": [
+        {
+          "doc_id": "07_privacy_and_data_subject_rights_procedure.md",
+          "title": "07 privacy and data subject rights procedure",
+          "source": "corpus/07_privacy_and_data_subject_rights_procedure.md",
+          "snippet": "## 7. Timelines\nStandard response target is 30 days from verification, subject to lawful extension where complexity is high. Extensions must be communicated with reason.\n\n## 8. Internal Fulfillment Workflow\n- Privacy team triages request scope.\n- Data owners gather records from systems of record.\n- Legal validates exemptions and response language.\n- Privacy team issues response"
+        }
+      ],
+      "latency_ms": 25384,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 14,
+      "question": "Can employees use public Wi-Fi for company work without VPN?",
+      "gold": "No, public Wi-Fi requires VPN with MFA.",
+      "expected_source": "08_remote_work_and_device_policy.md",
+      "answer": "No, employees cannot use public Wi-Fi for company work without a VPN. According to the \"08 remote work and device policy\" (doc_id=08_remote_work_and_device_policy.md), public Wi-Fi requires a VPN with MFA. Additionally, accessing company data over open or unsecured networks without a VPN is strictly prohibited.",
+      "citations": [
+        {
+          "doc_id": "08_remote_work_and_device_policy.md",
+          "title": "08 remote work and device policy",
+          "source": "corpus/08_remote_work_and_device_policy.md",
+          "snippet": "## 4. Company Device Requirements\nEmployees must use company-managed devices for company work unless exception is approved. Mandatory controls include:\n- Full disk encryption\n- Endpoint protection\n- Auto-lock after inactivity\n- Up-to-date operating system and browsers\n\n## 5. Network and Connectivity\nUse trusted networks whenever possible. Public Wi-Fi requires VPN with MFA. Ope"
+        },
+        {
+          "doc_id": "15_acceptable_use_policy.md",
+          "title": "15 acceptable use policy",
+          "source": "corpus/15_acceptable_use_policy.md",
+          "snippet": "# Acceptable Use Policy\n\nDocument Owner: IT and Legal\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Use of company networks, devices, systems, and data\n\n## 1. Purpose\nThis policy describes acceptable and prohibited use of company technology resources.\n\n## 2. Acceptable Use Principles\nCompany systems are provided to support business objectives. Limited personal use"
+        }
+      ],
+      "latency_ms": 9905,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 15,
+      "question": "How frequently are Tier 1 vendors reassessed?",
+      "gold": "Annually.",
+      "expected_source": "09_vendor_risk_management_procedure.md",
+      "answer": "Tier 1 vendors are reassessed annually (doc_id=09_vendor_risk_management_procedure.md; title=09 vendor risk management procedure).",
+      "citations": [
+        {
+          "doc_id": "09_vendor_risk_management_procedure.md",
+          "title": "09 vendor risk management procedure",
+          "source": "corpus/09_vendor_risk_management_procedure.md",
+          "snippet": "## 7. Onboarding\nNo production access is granted until contractual and technical controls are complete.\n\n## 8. Ongoing Monitoring\n- Tier 1 vendors reviewed annually\n- Tier 2 vendors reviewed every 18 months\n- Tier 3 vendors reviewed at renewal\n\nTriggers for immediate reassessment include incidents, ownership changes, or significant control failures.\n\n## 9. Incident Coordination"
+        }
+      ],
+      "latency_ms": 9130,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 16,
+      "question": "Which change type requires retrospective approval within one business day?",
+      "gold": "Emergency changes.",
+      "expected_source": "10_change_management_procedure.md",
+      "answer": "Emergency changes require retrospective approval within one business day (doc_id=10_change_management_procedure.md; title=10 change management procedure).",
+      "citations": [
+        {
+          "doc_id": "10_change_management_procedure.md",
+          "title": "10 change management procedure",
+          "source": "corpus/10_change_management_procedure.md",
+          "snippet": "## 9. Emergency Changes\nEmergency changes require immediate implementation notes and retrospective approval within one business day.\n\n## 10. Post-Implementation Review\nFor high-risk or failed changes, complete review within three business days covering root cause and prevention actions.\n\n## 11. Segregation of Duties\nWhere practical, the change requester should not be the sole a"
+        }
+      ],
+      "latency_ms": 19722,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 17,
+      "question": "What do RTO and RPO represent in continuity planning?",
+      "gold": "RTO is target restore time; RPO is maximum acceptable data loss window.",
+      "expected_source": "11_business_continuity_and_disaster_recovery_policy.md",
+      "answer": "According to the provided policy, RTO represents the target time to restore service, and RPO represents the maximum acceptable data loss window (doc_id=11_business_continuity_and_disaster_recovery_policy.md; title=11 business continuity and disaster recovery policy).",
+      "citations": [
+        {
+          "doc_id": "11_business_continuity_and_disaster_recovery_policy.md",
+          "title": "11 business continuity and disaster recovery policy",
+          "source": "corpus/11_business_continuity_and_disaster_recovery_policy.md",
+          "snippet": "# Business Continuity and Disaster Recovery Policy\n\nDocument Owner: Reliability Engineering\nEffective Date: 2026-01-01\nReview Cycle: Annual\nApplies To: Critical business functions and technology services\n\n## 1. Purpose\nThis policy establishes continuity and recovery expectations for disruptions affecting critical operations.\n\n## 2. Definitions\n- Business Continuity (BC): sustai"
+        }
+      ],
+      "latency_ms": 17327,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 18,
+      "question": "Within how many days should travel expenses generally be submitted after travel completion?",
+      "gold": "Within 15 days.",
+      "expected_source": "12_travel_and_expense_policy.md",
+      "answer": "Travel expenses should generally be submitted within 15 days (doc_id=12_travel_and_expense_policy.md; title=12 travel and expense policy).",
+      "citations": [
+        {
+          "doc_id": "12_travel_and_expense_policy.md",
+          "title": "12 travel and expense policy",
+          "source": "corpus/12_travel_and_expense_policy.md",
+          "snippet": "## 4. Allowed Expense Categories\n- Air, rail, and ground transport for business travel\n- Lodging within approved rate ranges\n- Reasonable meal expenses while traveling\n- Required visa and travel documentation fees\n- Conference registration and approved training events\n\n## 5. Non-Reimbursable Expenses\n- Personal entertainment\n- Alcohol beyond policy limits\n- Fines, penalties, an"
+        }
+      ],
+      "latency_ms": 14823,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 19,
+      "question": "When is access revoked for involuntary terminations?",
+      "gold": "At notification time or earlier.",
+      "expected_source": "13_onboarding_and_offboarding_sop.md",
+      "answer": "For involuntary terminations, access is revoked at the time of notification or earlier (doc_id=13_onboarding_and_offboarding_sop.md; title=13 onboarding and offboarding sop).",
+      "citations": [
+        {
+          "doc_id": "13_onboarding_and_offboarding_sop.md",
+          "title": "13 onboarding and offboarding sop",
+          "source": "corpus/13_onboarding_and_offboarding_sop.md",
+          "snippet": "## 8. Offboarding Workflow\n- HR confirms final working date and notifies stakeholders.\n- IT schedules access revocation.\n- Manager completes handover and knowledge transfer.\n- Asset return is coordinated and tracked.\n\n## 9. Access Revocation Standards\nFor involuntary terminations, access is revoked at notification time or earlier. For voluntary departures, access is revoked at "
+        }
+      ],
+      "latency_ms": 18260,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 20,
+      "question": "What are the P1 and P2 initial response targets in customer support?",
+      "gold": "P1 within 15 minutes, P2 within 1 hour.",
+      "expected_source": "14_customer_support_escalation_procedure.md",
+      "answer": "Based on the provided policy, the initial response targets for customer support are:\n- **P1:** 15 minutes\n- **P2:** 1 hour\n\n(doc_id=14_customer_support_escalation_procedure.md; title=14 customer support escalation procedure)",
+      "citations": [
+        {
+          "doc_id": "14_customer_support_escalation_procedure.md",
+          "title": "14 customer support escalation procedure",
+          "source": "corpus/14_customer_support_escalation_procedure.md",
+          "snippet": "## 4. Initial Response Targets\n- P1: 15 minutes\n- P2: 1 hour\n- P3: 4 business hours\n- P4: 1 business day\n\n## 5. Escalation Paths\n### Technical Escalation\nTriggered when issue exceeds support runbook scope or indicates service defect.\n\n### Incident Escalation\nTriggered for multi-customer impact, security concern, or outage indicators.\n\n### Executive Escalation\nTriggered when con"
+        }
+      ],
+      "latency_ms": 10450,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 21,
+      "question": "Which leave categories are listed in the handbook for time off?",
+      "gold": "Vacation, sick leave, family/caregiver leave, public holiday leave, and jury/civic duty leave.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "According to the employee handbook, the listed leave categories for time off include vacation, sick leave, family and caregiver leave, public holiday leave, and jury or civic duty leave (doc_id=01_employee_handbook_overview.md; title=01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 3. Employment Classifications\nEmployees are classified as full-time, part-time, temporary, or intern. Classification affects benefits eligibility, paid leave, and overtime treatment. HR maintains classification records and resolves disputes.\n\n## 4. Work Hours and Scheduling\nCore collaboration hours are 10:00 AM to 3:00 PM local time. Outside this period, teams may set flexib"
+        }
+      ],
+      "latency_ms": 9454,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    },
+    {
+      "id": 22,
+      "question": "Does the policy explicitly recognize public holiday leave as a leave category?",
+      "gold": "Yes, public holiday leave is explicitly listed.",
+      "expected_source": "01_employee_handbook_overview.md",
+      "answer": "Yes, the policy explicitly recognizes public holiday leave as a leave category. The Employee Handbook Overview lists \"Public holiday leave\" among the approved leave categories, alongside vacation, sick leave, family and caregiver leave, and jury or civic duty leave (doc_id=01_employee_handbook_overview.md, title=01 employee handbook overview).",
+      "citations": [
+        {
+          "doc_id": "01_employee_handbook_overview.md",
+          "title": "01 employee handbook overview",
+          "source": "corpus/01_employee_handbook_overview.md",
+          "snippet": "## 5. Attendance and Leave\nEmployees must report planned and unplanned absences in the HRIS portal. Leave categories include:\n- Vacation\n- Sick leave\n- Family and caregiver leave\n- Public holiday leave\n- Jury or civic duty leave\n\nManagers approve leave based on team coverage and business needs. Retaliation for lawful leave usage is prohibited.\n\n## 6. Compensation and Payroll\nPa"
+        }
+      ],
+      "latency_ms": 16071,
+      "groundedness": "manual",
+      "citation_accuracy": "manual"
+    }
+  ]
+}
