@@ -5,8 +5,8 @@ import time
 from time import sleep
 from typing import Any
 
-from langchain_community.embeddings import HuggingFaceEmbeddings
-from langchain_community.vectorstores import Chroma
+from langchain_chroma import Chroma
+from langchain_huggingface import HuggingFaceEmbeddings
 from openai import OpenAI
 
 from src.config import Settings
@@ -67,10 +67,12 @@ class PolicyRAGService:
             embedding_function=self.embeddings,
             persist_directory=str(settings.vector_db_path),
         )
-        self.client = OpenAI(
-            api_key=settings.openrouter_api_key,
-            base_url=settings.openrouter_base_url,
-        )
+        self.client = None
+        if settings.openrouter_api_key:
+            self.client = OpenAI(
+                api_key=settings.openrouter_api_key,
+                base_url=settings.openrouter_base_url,
+            )
 
     def index_ready(self) -> bool:
         try:
@@ -154,26 +156,27 @@ class PolicyRAGService:
             )
 
         answer = ""
-        for attempt in range(1, 4):
-            try:
-                completion = self.client.chat.completions.create(
-                    model=self.settings.openrouter_model,
-                    extra_headers={
-                        "HTTP-Referer": self.settings.openrouter_http_referer,
-                        "X-Title": self.settings.openrouter_app_title,
-                    },
-                    messages=[
-                        {"role": "system", "content": SYSTEM_PROMPT},
-                        {"role": "user", "content": self._make_user_prompt(question, contexts)},
-                    ],
-                    temperature=self.settings.llm_temperature,
-                    max_tokens=self.settings.llm_max_tokens,
-                )
-                answer = completion.choices[0].message.content or ""
-                break
-            except Exception:
-                if attempt < 3:
-                    sleep(float(attempt))
+        if self.client is not None:
+            for attempt in range(1, 4):
+                try:
+                    completion = self.client.chat.completions.create(
+                        model=self.settings.openrouter_model,
+                        extra_headers={
+                            "HTTP-Referer": self.settings.openrouter_http_referer,
+                            "X-Title": self.settings.openrouter_app_title,
+                        },
+                        messages=[
+                            {"role": "system", "content": SYSTEM_PROMPT},
+                            {"role": "user", "content": self._make_user_prompt(question, contexts)},
+                        ],
+                        temperature=self.settings.llm_temperature,
+                        max_tokens=self.settings.llm_max_tokens,
+                    )
+                    answer = completion.choices[0].message.content or ""
+                    break
+                except Exception:
+                    if attempt < 3:
+                        sleep(float(attempt))
 
         if not answer:
             # Fallback keeps endpoint stable and remains grounded in retrieved evidence.

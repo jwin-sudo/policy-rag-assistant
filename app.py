@@ -1,5 +1,6 @@
 from __future__ import annotations
 
+from functools import lru_cache
 from pathlib import Path
 
 from fastapi import FastAPI, HTTPException
@@ -17,12 +18,19 @@ set_global_seed(settings.random_seed)
 app = FastAPI(title="Policy RAG Assistant", version="0.1.0")
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
 
-rag_service = PolicyRAGService(settings)
+
+@lru_cache(maxsize=1)
+def get_rag_service() -> PolicyRAGService:
+    return PolicyRAGService(settings)
 
 
 @app.get("/health", response_model=HealthResponse)
 def health() -> HealthResponse:
-    return HealthResponse(status="ok", index_ready=rag_service.index_ready())
+    try:
+        index_ready = get_rag_service().index_ready()
+    except Exception:
+        index_ready = False
+    return HealthResponse(status="ok", index_ready=index_ready)
 
 
 @app.get("/", response_class=HTMLResponse)
@@ -38,6 +46,8 @@ def home(request: Request) -> HTMLResponse:
 def chat(payload: ChatRequest) -> ChatResponse:
     if not settings.openrouter_api_key:
         raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY is not configured")
+
+    rag_service = get_rag_service()
 
     if not rag_service.index_ready():
         raise HTTPException(status_code=503, detail="Vector index is empty. Run ingestion first.")
