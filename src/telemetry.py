@@ -26,14 +26,10 @@ def setup_telemetry(settings: Settings) -> bool:
         logger.warning("Telemetry enabled but OTLP exporter import failed: %s", exc)
         return False
 
-    sample_ratio = min(max(settings.otel_sample_ratio, 0.0), 1.0)
-    if sample_ratio != settings.otel_sample_ratio:
-        logger.warning("Invalid OTEL sample ratio %s; clamped to %s", settings.otel_sample_ratio, sample_ratio)
-
     try:
         provider = TracerProvider(
             resource=Resource.create({"service.name": settings.otel_service_name}),
-            sampler=ParentBased(TraceIdRatioBased(sample_ratio)),
+            sampler=ParentBased(TraceIdRatioBased(settings.otel_sample_ratio)),
         )
         exporter = OTLPSpanExporter(endpoint=settings.otel_exporter_otlp_endpoint)
         provider.add_span_processor(BatchSpanProcessor(exporter))

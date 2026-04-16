@@ -169,7 +169,10 @@ class PolicyRAGService:
         if self.client is not None:
             with tracer.start_as_current_span("rag.llm_call") as span:
                 span.set_attribute("rag.model", self.settings.openrouter_model)
+                last_attempt = 1
+                had_exception = False
                 for attempt in range(1, 4):
+                    last_attempt = attempt
                     try:
                         completion = self.client.chat.completions.create(
                             model=self.settings.openrouter_model,
@@ -185,18 +188,20 @@ class PolicyRAGService:
                             max_tokens=self.settings.llm_max_tokens,
                         )
                         answer = completion.choices[0].message.content or ""
-                        span.set_attribute("rag.llm_attempt", attempt)
-                        span.set_attribute("rag.llm_attempts", attempt)
-                        span.set_attribute("rag.llm_success", True)
-                        break
+                        if answer:
+                            break
+                        else:
+                            if attempt < 3:
+                                sleep(float(attempt))
                     except Exception as exc:
+                        had_exception = True
                         span.record_exception(exc)
-                        span.set_attribute("rag.llm_attempt", attempt)
                         if attempt < 3:
                             sleep(float(attempt))
+                span.set_attribute("rag.llm_attempt", last_attempt)
+                span.set_attribute("rag.llm_success", bool(answer))
+                span.set_attribute("rag.llm_had_exception", had_exception)
                 if not answer:
-                    span.set_attribute("rag.llm_attempts", 3)
-                    span.set_attribute("rag.llm_success", False)
                     span.set_status(Status(StatusCode.ERROR, "llm_call_failed"))
 
         if not answer:
