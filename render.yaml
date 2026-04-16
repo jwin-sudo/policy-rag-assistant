@@ -29,3 +29,11 @@ services:
         value: "42"
       - key: MAX_ANSWER_WORDS
         value: "180"
+      - key: OTEL_ENABLED
+        value: "false"
+      - key: OTEL_SERVICE_NAME
+        value: policy-rag-assistant
+      - key: OTEL_EXPORTER_OTLP_ENDPOINT
+        sync: false
+      - key: OTEL_SAMPLE_RATIO
+        value: "1.0"

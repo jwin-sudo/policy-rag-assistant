@@ -33,6 +33,11 @@ class Settings(BaseSettings):
     llm_temperature: float = Field(default=0.0, alias="LLM_TEMPERATURE")
     llm_max_tokens: int = Field(default=220, alias="LLM_MAX_TOKENS")
 
+    otel_enabled: bool = Field(default=False, alias="OTEL_ENABLED")
+    otel_service_name: str = Field(default="policy-rag-assistant", alias="OTEL_SERVICE_NAME")
+    otel_exporter_otlp_endpoint: str | None = Field(default=None, alias="OTEL_EXPORTER_OTLP_ENDPOINT")
+    otel_sample_ratio: float = Field(default=1.0, alias="OTEL_SAMPLE_RATIO")
+
     @property
     def vector_db_path(self) -> Path:
         return Path(self.vector_db_dir)
