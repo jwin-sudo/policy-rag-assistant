@@ -11,9 +11,11 @@ from fastapi.requests import Request
 from src.config import Settings, set_global_seed
 from src.rag import PolicyRAGService
 from src.schemas import ChatMeta, ChatRequest, ChatResponse, HealthResponse
+from src.telemetry import get_tracer, setup_telemetry
 
 settings = Settings()
 set_global_seed(settings.random_seed)
+setup_telemetry(settings)
 
 app = FastAPI(title="Policy RAG Assistant", version="0.1.0")
 templates = Jinja2Templates(directory=str(Path(__file__).parent / "templates"))
@@ -44,23 +46,25 @@ def home(request: Request) -> HTMLResponse:
 
 @app.post("/chat", response_model=ChatResponse)
 def chat(payload: ChatRequest) -> ChatResponse:
-    if not settings.openrouter_api_key:
-        raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY is not configured")
+    tracer = get_tracer(__name__)
+    with tracer.start_as_current_span("chat.request"):
+        if not settings.openrouter_api_key:
+            raise HTTPException(status_code=500, detail="OPENROUTER_API_KEY is not configured")
 
-    rag_service = get_rag_service()
+        rag_service = get_rag_service()
 
-    if not rag_service.index_ready():
-        raise HTTPException(status_code=503, detail="Vector index is empty. Run ingestion first.")
+        if not rag_service.index_ready():
+            raise HTTPException(status_code=503, detail="Vector index is empty. Run ingestion first.")
 
-    answer, citations, latency_ms, refusal = rag_service.answer(payload.question)
-    return ChatResponse(
-        question=payload.question,
-        answer=answer,
-        citations=citations,
-        meta=ChatMeta(
-            latency_ms=latency_ms,
-            model=settings.openrouter_model,
-            top_k=settings.top_k,
-            refusal=refusal,
-        ),
-    )
+        answer, citations, latency_ms, refusal = rag_service.answer(payload.question)
+        return ChatResponse(
+            question=payload.question,
+            answer=answer,
+            citations=citations,
+            meta=ChatMeta(
+                latency_ms=latency_ms,
+                model=settings.openrouter_model,
+                top_k=settings.top_k,
+                refusal=refusal,
+            ),
+        )
