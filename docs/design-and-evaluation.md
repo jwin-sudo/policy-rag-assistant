@@ -50,6 +50,7 @@ The system is a policy-focused Retrieval-Augmented Generation (RAG) assistant th
 ### Operational Design Notes
 - Deterministic settings and consistent configs were used for reproducible evaluation runs.
 - API behavior includes health reporting and structured metadata (latency, model, retrieval settings, refusal flag) for observability.
+- Optional OpenTelemetry tracing is available behind an environment flag for low-risk incremental observability in staging/production.
 
 ### Trade-offs
 - Local embeddings reduce cost but increase cold-start and CPU workload.

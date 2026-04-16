@@ -12,6 +12,7 @@ Policy RAG web application for answering questions from an internal policy corpu
 	- `POST /chat` answer with citations and snippets
 	- `GET /health` service/index health
 - Evaluation runner with latency metrics (p50/p95)
+- Optional OpenTelemetry tracing (feature-flagged)
 - CI pipeline via GitHub Actions
 
 ## Repository Structure
@@ -62,6 +63,7 @@ Common defaults are already provided in `.env.example`:
 - `VECTOR_DB_DIR`
 - `CORPUS_DIR`
 - `TOP_K`, `CHUNK_SIZE`, `CHUNK_OVERLAP`
+- Optional telemetry: `OTEL_ENABLED`, `OTEL_SERVICE_NAME`, `OTEL_EXPORTER_OTLP_ENDPOINT`, `OTEL_SAMPLE_RATIO`
 
 ## 3. Build the Vector Index
 
@@ -116,6 +118,25 @@ Latest artifacts:
 - `evaluation/eval_run_22q_final.json`
 - `evaluation/EVAL_REPORT_LATEST.md`
 - `evaluation/SUCCESS_METRICS.md`
+
+## 6.1 Observability (OpenTelemetry)
+
+Telemetry is disabled by default. To enable it:
+
+```bash
+export OTEL_ENABLED=true
+export OTEL_EXPORTER_OTLP_ENDPOINT="http://localhost:4318/v1/traces"
+```
+
+Optional settings:
+- `OTEL_SERVICE_NAME` (default: `policy-rag-assistant`)
+- `OTEL_SAMPLE_RATIO` (default: `1.0`)
+
+When enabled, spans are emitted for:
+- `chat.request`
+- `rag.retrieve`
+- `rag.llm_call`
+- `rag.citation_select`
 
 ## 7. CI/CD
 

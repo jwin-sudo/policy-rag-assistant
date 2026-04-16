@@ -8,9 +8,11 @@ from typing import Any
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from openai import OpenAI
+from opentelemetry.trace import Status, StatusCode
 
 from src.config import Settings
 from src.schemas import Citation
+from src.telemetry import get_tracer
 
 SYSTEM_PROMPT = (
     "You are a policy assistant. Answer only with facts supported by retrieved policy context. "
@@ -81,52 +83,59 @@ class PolicyRAGService:
             return False
 
     def retrieve(self, question: str) -> list[dict[str, Any]]:
-        fetch_k = max(self.settings.retrieval_fetch_k, self.settings.top_k)
-        docs = self.vectorstore.similarity_search(question, k=fetch_k)
+        tracer = get_tracer(__name__)
+        with tracer.start_as_current_span("rag.retrieve") as span:
+            fetch_k = max(self.settings.retrieval_fetch_k, self.settings.top_k)
+            docs = self.vectorstore.similarity_search(question, k=fetch_k)
+            span.set_attribute("rag.fetch_k", fetch_k)
+            span.set_attribute("rag.top_k", self.settings.top_k)
+            span.set_attribute("rag.docs_retrieved", len(docs))
 
-        question_terms = _normalized_terms(question)
-        ranked: list[tuple[float, Any]] = []
-        for idx, doc in enumerate(docs):
-            text = doc.page_content
-            text_terms = _normalized_terms(text[:1000])
-            overlap = len(question_terms & text_terms)
-            # Prefer high lexical overlap, then preserve vector rank order.
-            score = (overlap * 10.0) - float(idx)
-            ranked.append((score, doc))
+            question_terms = _normalized_terms(question)
+            ranked: list[tuple[float, Any]] = []
+            for idx, doc in enumerate(docs):
+                text = doc.page_content
+                text_terms = _normalized_terms(text[:1000])
+                overlap = len(question_terms & text_terms)
+                # Prefer high lexical overlap, then preserve vector rank order.
+                score = (overlap * 10.0) - float(idx)
+                ranked.append((score, doc))
 
-        ranked.sort(key=lambda x: x[0], reverse=True)
+            ranked.sort(key=lambda x: x[0], reverse=True)
 
-        results: list[dict[str, Any]] = []
-        seen_chunks: set[str] = set()
-        for _, doc in ranked:
-            text = doc.page_content.strip()
-            if not text:
-                continue
+            results: list[dict[str, Any]] = []
+            seen_chunks: set[str] = set()
+            for _, doc in ranked:
+                text = doc.page_content.strip()
+                if not text:
+                    continue
 
-            dedupe_key = f"{doc.metadata.get('doc_id','unknown')}::{text[:220]}"
-            if dedupe_key in seen_chunks:
-                continue
-            seen_chunks.add(dedupe_key)
+                dedupe_key = f"{doc.metadata.get('doc_id','unknown')}::{text[:220]}"
+                if dedupe_key in seen_chunks:
+                    continue
+                seen_chunks.add(dedupe_key)
 
-            snippet = text[:380]
-            prompt_text = text[: self.settings.max_context_chars]
-            text_terms = _normalized_terms(text[:1000])
-            overlap = len(question_terms & text_terms)
-            results.append(
-                {
-                    "doc_id": doc.metadata.get("doc_id", "unknown"),
-                    "title": doc.metadata.get("title", "Untitled"),
-                    "source": doc.metadata.get("source", ""),
-                    "snippet": snippet,
-                    "text": prompt_text,
-                    "overlap": overlap,
-                }
-            )
+                snippet = text[:380]
+                prompt_text = text[: self.settings.max_context_chars]
+                text_terms = _normalized_terms(text[:1000])
+                overlap = len(question_terms & text_terms)
+                results.append(
+                    {
+                        "doc_id": doc.metadata.get("doc_id", "unknown"),
+                        "title": doc.metadata.get("title", "Untitled"),
+                        "source": doc.metadata.get("source", ""),
+                        "snippet": snippet,
+                        "text": prompt_text,
+                        "overlap": overlap,
+                    }
+                )
 
-            if len(results) >= self.settings.top_k:
-                break
+                if len(results) >= self.settings.top_k:
+                    break
 
-        return results
+            span.set_attribute("rag.contexts_returned", len(results))
+
+            return results
 
     def _make_user_prompt(self, question: str, contexts: list[dict[str, Any]]) -> str:
         serialized = []
@@ -144,6 +153,7 @@ class PolicyRAGService:
         )
 
     def answer(self, question: str) -> tuple[str, list[Citation], int, bool]:
+        tracer = get_tracer(__name__)
         start = time.perf_counter()
         contexts = self.retrieve(question)
 
@@ -157,26 +167,42 @@ class PolicyRAGService:
 
         answer = ""
         if self.client is not None:
-            for attempt in range(1, 4):
-                try:
-                    completion = self.client.chat.completions.create(
-                        model=self.settings.openrouter_model,
-                        extra_headers={
-                            "HTTP-Referer": self.settings.openrouter_http_referer,
-                            "X-Title": self.settings.openrouter_app_title,
-                        },
-                        messages=[
-                            {"role": "system", "content": SYSTEM_PROMPT},
-                            {"role": "user", "content": self._make_user_prompt(question, contexts)},
-                        ],
-                        temperature=self.settings.llm_temperature,
-                        max_tokens=self.settings.llm_max_tokens,
-                    )
-                    answer = completion.choices[0].message.content or ""
-                    break
-                except Exception:
-                    if attempt < 3:
-                        sleep(float(attempt))
+            with tracer.start_as_current_span("rag.llm_call") as span:
+                span.set_attribute("rag.model", self.settings.openrouter_model)
+                last_attempt = 1
+                had_exception = False
+                for attempt in range(1, 4):
+                    last_attempt = attempt
+                    try:
+                        completion = self.client.chat.completions.create(
+                            model=self.settings.openrouter_model,
+                            extra_headers={
+                                "HTTP-Referer": self.settings.openrouter_http_referer,
+                                "X-Title": self.settings.openrouter_app_title,
+                            },
+                            messages=[
+                                {"role": "system", "content": SYSTEM_PROMPT},
+                                {"role": "user", "content": self._make_user_prompt(question, contexts)},
+                            ],
+                            temperature=self.settings.llm_temperature,
+                            max_tokens=self.settings.llm_max_tokens,
+                        )
+                        answer = completion.choices[0].message.content or ""
+                        if answer:
+                            break
+                        else:
+                            if attempt < 3:
+                                sleep(float(attempt))
+                    except Exception as exc:
+                        had_exception = True
+                        span.record_exception(exc)
+                        if attempt < 3:
+                            sleep(float(attempt))
+                span.set_attribute("rag.llm_attempt", last_attempt)
+                span.set_attribute("rag.llm_success", bool(answer))
+                span.set_attribute("rag.llm_had_exception", had_exception)
+                if not answer:
+                    span.set_status(Status(StatusCode.ERROR, "llm_call_failed"))
 
         if not answer:
             # Fallback keeps endpoint stable and remains grounded in retrieved evidence.
@@ -200,24 +226,26 @@ class PolicyRAGService:
 
         citation_candidates = referenced if referenced else contexts
 
-        citations: list[Citation] = []
-        seen_docs: set[str] = set()
-        for ctx in citation_candidates:
-            doc_id = ctx["doc_id"]
-            if doc_id in seen_docs:
-                continue
+        with tracer.start_as_current_span("rag.citation_select") as span:
+            citations: list[Citation] = []
+            seen_docs: set[str] = set()
+            for ctx in citation_candidates:
+                doc_id = ctx["doc_id"]
+                if doc_id in seen_docs:
+                    continue
 
-            citations.append(
-                Citation(
-                    doc_id=doc_id,
-                    title=ctx["title"],
-                    source=ctx.get("source", ""),
-                    snippet=ctx["snippet"],
+                citations.append(
+                    Citation(
+                        doc_id=doc_id,
+                        title=ctx["title"],
+                        source=ctx.get("source", ""),
+                        snippet=ctx["snippet"],
+                    )
                 )
-            )
-            seen_docs.add(doc_id)
-            if len(citations) >= self.settings.max_citations:
-                break
+                seen_docs.add(doc_id)
+                if len(citations) >= self.settings.max_citations:
+                    break
+            span.set_attribute("rag.citations", len(citations))
 
         latency_ms = int((time.perf_counter() - start) * 1000)
         refusal = answer.strip().startswith("I can only answer questions about the provided policy corpus.")
