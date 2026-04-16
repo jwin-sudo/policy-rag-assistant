@@ -8,6 +8,7 @@ from typing import Any
 from langchain_chroma import Chroma
 from langchain_huggingface import HuggingFaceEmbeddings
 from openai import OpenAI
+from opentelemetry.trace import Status, StatusCode
 
 from src.config import Settings
 from src.schemas import Citation
@@ -185,10 +186,18 @@ class PolicyRAGService:
                         )
                         answer = completion.choices[0].message.content or ""
                         span.set_attribute("rag.llm_attempt", attempt)
+                        span.set_attribute("rag.llm_attempts", attempt)
+                        span.set_attribute("rag.llm_success", True)
                         break
-                    except Exception:
+                    except Exception as exc:
+                        span.record_exception(exc)
+                        span.set_attribute("rag.llm_attempt", attempt)
                         if attempt < 3:
                             sleep(float(attempt))
+                if not answer:
+                    span.set_attribute("rag.llm_attempts", 3)
+                    span.set_attribute("rag.llm_success", False)
+                    span.set_status(Status(StatusCode.ERROR, "llm_call_failed"))
 
         if not answer:
             # Fallback keeps endpoint stable and remains grounded in retrieved evidence.

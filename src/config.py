@@ -4,7 +4,7 @@ import random
 from pathlib import Path
 
 import numpy as np
-from pydantic import Field
+from pydantic import Field, field_validator
 from pydantic_settings import BaseSettings, SettingsConfigDict
 
 
@@ -37,6 +37,11 @@ class Settings(BaseSettings):
     otel_service_name: str = Field(default="policy-rag-assistant", alias="OTEL_SERVICE_NAME")
     otel_exporter_otlp_endpoint: str | None = Field(default=None, alias="OTEL_EXPORTER_OTLP_ENDPOINT")
     otel_sample_ratio: float = Field(default=1.0, alias="OTEL_SAMPLE_RATIO")
+
+    @field_validator("otel_sample_ratio")
+    @classmethod
+    def clamp_otel_sample_ratio(cls, value: float) -> float:
+        return min(max(value, 0.0), 1.0)
 
     @property
     def vector_db_path(self) -> Path:
